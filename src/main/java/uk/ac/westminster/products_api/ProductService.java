@@ -20,10 +20,5 @@ public class ProductService {
         return product;
     }
 
-    public Optional<Product> getProductById(Long id) {
-        return products.stream()
-                .filter(p -> p.getId().equals(id))
-                .findFirst();
-    }
 
 }
