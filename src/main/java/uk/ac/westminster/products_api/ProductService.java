@@ -22,10 +22,31 @@ public class ProductService {
         return product;
     }
 
+    // Get a product by its ID
     public Optional<Product> getProductById(Long id) {
         return products.stream()
                 .filter(p -> p.getId().equals(id))
                 .findFirst();
+    }
+
+    // Add a new product
+    public Product addProduct(Product product) {
+        product.setId(nextId++);
+        products.add(product);
+        return product;
+    }
+
+    // Delete a product by ID
+    public void deleteProduct(Long id) {
+        products.removeIf(p -> p.getId().equals(id));
+    }
+
+
+    // Search products by name
+    public List<Product> findByName(String name) {
+        return products.stream()
+                .filter(p -> p.getName().contains(name))
+                .toList();
     }
 
 }
